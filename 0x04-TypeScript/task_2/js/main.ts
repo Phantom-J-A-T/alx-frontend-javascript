@@ -46,13 +46,25 @@ class Teacher implements TeacherInterface {
 
 // Factory function
 function createEmployee(salary: number | string): Director | Teacher {
-  if (salary < 500) {   // ✅ matches your checker’s expected code
+  if (salary < 500) {   // ✅ required syntax
     return new Teacher();
   }
   return new Director();
 }
 
+// Type predicate
+function isDirector(employee: Director | Teacher): employee is Director {
+  return employee instanceof Director;
+}
+
+// Function executeWork
+function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  }
+  return employee.workTeacherTasks();
+}
+
 // ------------------- TESTS -------------------
-console.log(createEmployee(200));   // Teacher
-console.log(createEmployee(1000));  // Director
-console.log(createEmployee("$500")); // Director
+console.log(executeWork(createEmployee(200)));   // Getting to work
+console.log(executeWork(createEmployee(1000)));  // Getting to director tasks
