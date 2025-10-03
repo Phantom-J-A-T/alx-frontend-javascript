@@ -2,8 +2,8 @@
 
 // Define Teacher interface
 interface Teacher {
-  readonly firstName: string; // can only be set at initialization
-  readonly lastName: string;  // can only be set at initialization
+  readonly firstName: string; // only set at initialization
+  readonly lastName: string;  // only set at initialization
   fullTimeEmployee: boolean;  // always defined
   yearsOfExperience?: number; // optional
   location: string;           // always defined
