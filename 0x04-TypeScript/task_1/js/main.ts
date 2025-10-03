@@ -20,10 +20,10 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Implement the function
-const printTeacher: printTeacherFunction = (firstName: string, lastName: string): string => {
+// Implement the function using destructured params
+function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
   return `${firstName.charAt(0)}. ${lastName}`;
-};
+}
 
 // Example Teacher objects
 const teacher1: Teacher = {
@@ -63,4 +63,4 @@ console.log(teacher1);
 console.log(teacher2);
 console.log(teacher3);
 console.log(director1);
-console.log(printTeacher("John", "Doe")); // -> J. Doe
+console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // -> J. Doe
